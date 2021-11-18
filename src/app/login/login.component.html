@@ -1,0 +1,37 @@
+<section>
+    <div class="container">
+        <form novalidate [formGroup]="form_login">
+            <div class="form-field">
+                <input
+                    name="username"
+                    formControlName="username"
+                    type="text"
+                    required
+                    placeholder="Username"
+                />
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-field">
+                <input
+                    name="password"
+                    class="password"
+                    placeholder="Password"
+                    formControlName="password"
+                    type="password"
+                />
+            </div>
+            <button
+                mat-flat-button
+                class="submit"
+                [disabled]="!form_login.valid"
+                (click)="login()"
+            >
+                Login
+            </button>
+            <div class="forget-password">
+                <a routerLink="/login">Forget Password</a>
+            </div>
+        </form>
+    </div>
+</section>
