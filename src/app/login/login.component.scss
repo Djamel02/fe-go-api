@@ -1,68 +1,69 @@
 section {
-    .container {
-      height: 100%;
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    text-align: center;
+    margin: auto;
+    form {
+      margin-top: 10vh;
       display: flex;
-      justify-content: center;
-      justify-self: center;
-      text-align: center;
-      margin: auto;
-      form {
-        margin-top: 10vh;
-        display: flex;
-        flex-direction: column;
-        width: 670px;
-        .form-field {
-          position: relative;
-          margin-bottom: 30px;
-          input {
-            width: 90%;
-            font-size: x-large;
-            color: #8a929c;
-            padding: 30px;
-            border: none;
-            border-radius: 20px;
-            box-shadow: -9px 14px 20px -20px;
-  
-            &::placeholder {
-              color: #8a929c;
-            }
-            &:focus {
-              outline: none;
-            }
-          }
-        }
-        .submit {
-          font-size: 40px;
-          font-weight: 900;
-          color: #fff;
-          background-color: #db0021;
-          padding: 10px;
+      flex-direction: column;
+      width: 670px;
+      .form-field {
+        position: relative;
+        margin-bottom: 30px;
+        input {
+          width: 90%;
+          font-size: x-large;
+          color: #8a929c;
+          padding: 30px;
           border: none;
           border-radius: 20px;
-          margin-bottom: 10px;
-          &:hover {
-            background-color: #a30018;
-            transition: 200ms;
-          }
-          &:disabled {
-            background-color: #cfcfcf;
+          box-shadow: -9px 14px 20px -20px;
+
+          &::placeholder {
             color: #8a929c;
-            transition: 200ms;
+          }
+          &:focus {
+            outline: none;
           }
         }
-        .forget-password {
-          text-align: center;
-          a {
-            text-decoration: none;
-            border-bottom: 1px solid #8a929c;
-            color: #8a929c;
-            font-size: x-large;
-          }
+      }
+      .submit {
+        font-size: 40px;
+        font-weight: 900;
+        color: #fff;
+        background-color: #736cca;
+        padding: 10px;
+        border: none;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: #544cc7;
+          transition: 200ms;
+        }
+        &:disabled {
+          background-color: #cfcfcf;
+          color: #8a929c;
+          transition: 200ms;
+        }
+      }
+      .forget-password {
+        text-align: center;
+        a {
+          text-decoration: none;
+          border-bottom: 1px solid #8a929c;
+          color: #8a929c;
+          font-size: x-large;
         }
       }
     }
   }
-  
-  .error {
-    color: rgb(255, 81, 0);
-  }
+}
+
+.error {
+  color: rgb(255, 81, 0);
+}
