@@ -1,0 +1,38 @@
+<section>
+  <div class="container">
+    <h1>Login Page</h1>
+    <form novalidate [formGroup]="form_login">
+      <!-- Username field  -->
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your username</mat-label>
+        <input matInput formControlName="username" />
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+      <!-- Password field -->
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          [type]="hide ? 'password' : 'text'"
+        />
+
+        <mat-icon matSuffix (click)="hide = !hide">{{
+          hide ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </mat-form-field>
+      <div class="error">{{ errMessage }}</div>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!form_login.valid"
+        (click)="login()"
+      >
+        Sign in
+      </button>
+      <br />
+    </form>
+    <h4>OR</h4>
+    <a mat-button color="primary" routerLink="/signup">Sign up</a>
+  </div>
+</section>
