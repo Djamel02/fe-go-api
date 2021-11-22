@@ -1,0 +1,17 @@
+section {
+  text-align: center;
+}
+.row {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+table {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  * {
+    text-align: center;
+  }
+}

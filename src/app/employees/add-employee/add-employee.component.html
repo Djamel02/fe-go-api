@@ -1,0 +1,25 @@
+<section>
+  <h2>Add Employee</h2>
+  <form novalidate [formGroup]="addEmpForm">
+    <!-- name field  -->
+    <mat-form-field appearance="outline">
+      <mat-label>Employee Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <!-- name field  -->
+    <mat-form-field appearance="outline">
+      <mat-label>Employee Phone</mat-label>
+      <input matInput formControlName="phone" />
+    </mat-form-field>
+    <div class="error">{{ errMessage }}</div>
+    <button
+      mat-raised-button
+      (click)="addEmployee()"
+      color="primary"
+      [disabled]="addEmpForm.invalid"
+    >
+      Add
+    </button>
+  </form>
+</section>
