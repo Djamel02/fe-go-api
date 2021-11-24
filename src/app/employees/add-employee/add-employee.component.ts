@@ -14,7 +14,9 @@ export class AddEmployeeComponent implements OnInit {
   addEmpForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
+    picture: new FormControl(null),
   });
+  url: string | ArrayBuffer | null = null;
 
   constructor(
     private employeeService: EmployeeService,
@@ -22,11 +24,38 @@ export class AddEmployeeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+  // Upload image and display it
+  uploadImage(event: any) {
+    const files = event?.target?.files;
+    if (files.length === 0) {
+      return;
+    }
+
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      console.log('Only images are supported.');
+      return;
+    }
+
+    const reader = new FileReader();
+    const imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.url = reader.result;
+      this.addEmpForm.get('picture')?.setValue(files[0]);
+    };
+  }
 
   addEmployee() {
-    this.employeeService.addNewEmployee(this.addEmpForm.value).subscribe(
-      (res: number) => {
-        this.diagRef.close();
+    const fd = new FormData();
+    fd.append('name', this.addEmpForm.get('name')?.value);
+    fd.append('phone', this.addEmpForm.get('phone')?.value);
+    fd.append('picture', this.addEmpForm.get('picture')?.value);
+    console.log(fd);
+    this.employeeService.addNewEmployee(fd).subscribe(
+      ({ data }) => {
+        console.log(data);
+        if (Number(data) > 0) this.diagRef.close();
       },
       (err: HttpErrorResponse) => {
         this.errMessage = err.message;

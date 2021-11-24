@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IEmployee } from 'src/app/models/employee.interface';
+import { Res } from 'src/app/models/response.interface';
 import { EmployeeService } from '../employee.service';
 
 @Component({
@@ -29,10 +30,11 @@ export class EditEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.employeeService
       .getEmployeeById(Number(this.data?.['id']))
-      .subscribe((res: IEmployee) => {
+      .subscribe((res: Res) => {
+        const data = res.data as IEmployee;
         this.editEmpForm.setValue({
-          name: res.name,
-          phone: res.phone,
+          name: data?.name,
+          phone: data?.phone,
         });
       });
   }
@@ -41,7 +43,7 @@ export class EditEmployeeComponent implements OnInit {
     this.employeeService
       .editEmployee(Number(this.data?.['id']), this.editEmpForm.value)
       .subscribe(
-        (res: IEmployee) => {
+        ({ data }) => {
           this.diagRef.close();
         },
         (err: HttpErrorResponse) => {

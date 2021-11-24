@@ -1,6 +1,20 @@
 <section>
   <h2>Add Employee</h2>
   <form novalidate [formGroup]="addEmpForm">
+    <!-- Image -->
+    <input type="file" hidden #uploadImg (change)="uploadImage($event)" />
+    <div class="col" style="text-align: center">
+      <div class="form-field" style="width: 50%; margin: auto">
+        <div
+          class="image-container mat-elevation-z9"
+          (click)="uploadImg.click()"
+        >
+          <mat-icon *ngIf="!url">add_a_photo</mat-icon>
+          <img *ngIf="url" src="{{ url }}" alt="" />
+        </div>
+      </div>
+    </div>
+    <br />
     <!-- name field  -->
     <mat-form-field appearance="outline">
       <mat-label>Employee Name</mat-label>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { IEmployee } from '../models/employee.interface';
+import { Res } from '../models/response.interface';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
@@ -26,11 +27,9 @@ export class EmployeesComponent implements OnInit {
   }
 
   private getEmployeesList() {
-    this.employeesService
-      .getEmployeesList()
-      .subscribe((res: Array<IEmployee>) => {
-        this.dataSource = new MatTableDataSource(res);
-      });
+    this.employeesService.getEmployeesList().subscribe(({ data }) => {
+      this.dataSource = new MatTableDataSource(data as Array<IEmployee>);
+    });
   }
 
   openAddEmployeeDiag() {

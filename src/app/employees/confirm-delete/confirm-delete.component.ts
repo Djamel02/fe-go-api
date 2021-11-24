@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Res } from 'src/app/models/response.interface';
 import { EmployeeService } from '../employee.service';
 
 @Component({
@@ -20,8 +21,8 @@ export class ConfirmDeleteComponent implements OnInit {
 
   deleteEmp() {
     this.employeeService.deleteEmployee(Number(this.data?.['id'])).subscribe(
-      (res: number) => {
-        if (res > 0) {
+      ({ data }) => {
+        if (Number(data) > 0) {
           this.diagRef.close();
         }
       },

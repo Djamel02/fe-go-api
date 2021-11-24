@@ -4,3 +4,25 @@ form {
   justify-content: center;
   width: 400px;
 }
+.image-container {
+  height: 200px;
+  width: 200px;
+  border: 0.3px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  mat-icon {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 200px;
+    width: 200px;
+    margin: auto;
+    font-size: 7rem;
+    color: #ccc;
+  }
+  img {
+    border-radius: 50%;
+    width: 200px;
+  }
+}
