@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as jwt from 'jwt-decode';
 import { IUser, loginDTO } from '../models/user.interface';
+import { Res } from '../models/response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,13 +13,13 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   // Login method
-  login(data: loginDTO): Observable<string> {
-    return this.http.post<string>(`${this.api}/login`, data);
+  login(data: loginDTO): Observable<Res> {
+    return this.http.post<Res>(`${this.api}/login`, data);
   }
 
   // Signup method
-  signup(user: IUser): Observable<number> {
-    return this.http.post<number>(`${this.api}/register`, user);
+  signup(user: IUser): Observable<Res> {
+    return this.http.post<Res>(`${this.api}/register`, user);
   }
 
   isLoggedIn(): boolean {

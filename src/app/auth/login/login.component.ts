@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.loginService.login(this.form_login.value).subscribe(
-      (token: string) => {
-        localStorage.setItem('token', token);
+      ({ data }) => {
+        localStorage.setItem('token', data as string);
         this.router.navigate(['']);
       },
       (err: HttpErrorResponse) => {

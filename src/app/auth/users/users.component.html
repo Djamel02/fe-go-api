@@ -13,6 +13,9 @@
         <mat-label>Enter your email</mat-label>
         <input matInput formControlName="email" />
         <mat-icon matSuffix>mail</mat-icon>
+        <mat-error *ngIf="form_signup.get('email')?.invalid"
+          >Email must be valid</mat-error
+        >
       </mat-form-field>
       <!-- Password field -->
       <mat-form-field appearance="outline">
@@ -26,6 +29,7 @@
           hide ? "visibility_off" : "visibility"
         }}</mat-icon>
       </mat-form-field>
+      <div class="error">{{ msgError }}</div>
       <button mat-raised-button color="primary" [disabled]="!form_signup.valid">
         Sign up
       </button>
